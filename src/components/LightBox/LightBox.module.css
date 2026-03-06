@@ -1,0 +1,110 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* container principal avec cadre noir */
+.lightbox {
+    position: relative;
+
+    width: 960px;
+    height: 720px;
+
+    background: #111;
+    border-radius: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* conteneur du média */
+.mediaContainer {
+    width: 900px;
+    height: 650px;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* médias */
+.mediaContainer img,
+.mediaContainer video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    image-rendering: auto;
+
+    border-radius: 4px;
+}
+
+/* titre */
+.mediaContainer p {
+    position: absolute;
+
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    left: 50%;
+    bottom: -50px;
+    transform: translateX(-50%);
+}
+
+/* boutons communs */
+.closeLightBox,
+.onPrevLightBox,
+.onNextLightBox {
+    position: absolute;
+
+    width: 35px;
+    height: 45px;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 2rem;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* croix */
+.closeLightBox {
+    top: 10px;
+    right: 15px;
+}
+
+/* flèche gauche */
+.onPrevLightBox {
+    left: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* flèche droite */
+.onNextLightBox {
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* focus accessibilité */
+.closeLightBox:focus,
+.onPrevLightBox:focus,
+.onNextLightBox:focus {
+    outline: 2px solid #901C1C;
+    outline-offset: 4px;
+}

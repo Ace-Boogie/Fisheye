@@ -1,0 +1,22 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 40px;
+    background-color: #DB8876;
+    color: var(--color-black);
+    padding: 15px 25px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    /*gap: 30px;*/
+    font-weight: 500;
+    font-size: 24px;
+
+    align-items: center;
+
+    width: 376px;
+}
+
+.faHeart {
+    width: 19px;
+}
