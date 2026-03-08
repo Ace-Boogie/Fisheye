@@ -75,17 +75,17 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
                         className={styles.closeButton}>
                     <FontAwesomeIcon icon={faTimes}/>
                 </button>
-                <label>
+                <label htmlFor="name">
                     Nom
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required/>
+                    <input id="name" type="text" name="name" value={formData.name} onChange={handleChange} required/>
                 </label>
-                <label>
+                <label htmlFor="email">
                     Email
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required/>
+                    <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required/>
                 </label>
-                <label>
+                <label htmlFor="message">
                     Message
-                    <textarea name="message" value={formData.message} onChange={handleChange} required/>
+                    <textarea id="message" name="message" value={formData.message} onChange={handleChange} required/>
                 </label>
                 <button type="submit">Envoyer</button>
             </form>

@@ -6,15 +6,42 @@
     color: var(--color-black);
     padding: 15px 25px;
     border-radius: 8px 8px 0 0;
+
     display: flex;
     justify-content: space-between;
-    /*gap: 30px;*/
+    align-items: center;
+
     font-weight: 500;
     font-size: 24px;
 
-    align-items: center;
-
     width: 376px;
+}
+
+/* reset des styles par défaut du dl */
+.footer dl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+}
+
+/* chaque paire terme / valeur */
+.footer div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* on cache le terme mais on le garde pour les lecteurs d'écran */
+.footer dt {
+    position: absolute;
+    left: -9999px;
+}
+
+/* valeur */
+.footer dd {
+    margin: 0;
 }
 
 .faHeart {

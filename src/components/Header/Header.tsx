@@ -15,7 +15,7 @@ export default function Header({ title }: { title?: string }) {
                 />
             </Link>
 
-            {title && <h1 aria-labelledby="photographers-title" className={styles.title}>{title}</h1>}
+            {title && <h1 aria-labelledby="photographers-title" id="photographers-title" className={styles.title}>{title}</h1>}
         </header>
     );
 }

@@ -46,7 +46,7 @@ export default function MediaSort({onSortChange}: MediaSortProps) {
 
     return (
         <div className={styles.sortContainer}>
-            <label id="sort-label">Trier par :</label>
+            <span id="sort-label">Trier par :</span>
 
             <div className={`${styles.customSelect} ${open ? styles.open : ""}`}
                 ref={selectRef}>

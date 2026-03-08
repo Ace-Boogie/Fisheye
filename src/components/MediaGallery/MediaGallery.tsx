@@ -22,17 +22,18 @@ export default function MediaGallery({ medias, openLightbox, onLikeChange }: Med
                         {media.image &&
                             <Image
                                 src={`/assets/${media.image}`}
-                                alt={media.title}
+                                alt=""
                                 className={styles.mediaImage}
                                 width={900}
                                 height={650}
-                                quality={80}
+                                quality={75}
                                 sizes="(max-width: 1000px) 90vw, 900px"
                                 loading="lazy"
                             />}
-                        {media.video && (
-                            <video src={`/assets/${media.video}`} className={styles.mediaVideo} />
-                        )}
+                        {media.video && <video aria-label={media.title} className={styles.mediaVideo}>
+                            <source src={`/assets/${media.video}`} type="video/mp4"/>
+                            Votre navigateur ne supporte pas la vidéo.
+                        </video>}
                     </button>
 
                     <div className={styles.mediaInfo}>

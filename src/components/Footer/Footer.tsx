@@ -11,8 +11,19 @@ interface FooterProps {
 export default function Footer({ photographer, totalLikes }: FooterProps) {
     return (
         <footer className={styles.footer}>
-            <p aria-live="polite">{totalLikes} <FontAwesomeIcon icon={faHeart} className={styles.faHeart} /></p>
-            <p>{photographer.price}€ / jour</p>
+            <dl>
+                <div aria-live="polite">
+                    <dt>Likes</dt>
+                    <dd>
+                        {totalLikes} <FontAwesomeIcon icon={faHeart} className={styles.faHeart} />
+                    </dd>
+                </div>
+
+                <div>
+                    <dt>Prix</dt>
+                    <dd>{photographer.price}€ / jour</dd>
+                </div>
+            </dl>
         </footer>
     );
 }

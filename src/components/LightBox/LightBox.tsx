@@ -52,8 +52,10 @@ export default function LightBox({medias, index, onClose, onPrev, onNext}: Light
                     <FontAwesomeIcon icon={faChevronLeft}/>
                 </button>
                 <div className={styles.mediaContainer}>
-                    {media.image && <Image src={`/assets/${media.image}`} alt={media.title} width={350} height={300}/>}
-                    {media.video && <video src={`/assets/${media.video}`} controls/>}
+                    {media.image && <Image src={`/assets/${media.image}`} alt="" width={350} height={300} className={styles.mediaImage}/>}
+                    {media.video && <video controls aria-label={media.title} className={styles.mediaVideo}>
+                        <source src={`/assets/${media.video}`} type="video/mp4"/>
+                    </video>}
                     <div aria-live="polite">
                         <p id={`lightbox-title-${media.id}`}>
                             {media.title}

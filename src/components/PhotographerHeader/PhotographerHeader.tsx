@@ -24,7 +24,7 @@ export default function PhotographerHeader({ photographer, openModal }: Photogra
                 width={200}
                 height={200}
                 priority
-                quality={70}
+                quality={75}
                 className={styles.headerImage}
             />
         </header>
