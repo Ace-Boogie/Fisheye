@@ -22,6 +22,7 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
 
     useEffect(() => {
         firstInputRef.current?.focus();
+        document.body.style.overflow = "hidden";
 
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
@@ -30,9 +31,8 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
 
             // Focus trap
             if (event.key === "Tab" && modalRef.current) {
-                const focusableElements = modalRef.current.querySelectorAll<
-                    HTMLButtonElement | HTMLInputElement | HTMLTextAreaElement
-                >("button, input, textarea");
+                const focusableElements = modalRef.current.querySelectorAll
+                    <HTMLElement>("button, [href], input, textarea, select, [tabindex]:not([tabindex='-1'])");
 
                 const firstElement = focusableElements[0];
                 const lastElement =
@@ -51,7 +51,10 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
         };
 
         window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
+        return () => {
+            document.body.style.overflow = "auto";
+            window.removeEventListener("keydown", handleKeyDown);
+        }
     }, [onClose]);
 
     /* =========================
@@ -77,7 +80,7 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
                 </button>
                 <label htmlFor="name">
                     Nom
-                    <input id="name" type="text" name="name" value={formData.name} onChange={handleChange} required/>
+                    <input ref={firstInputRef} id="name" type="text" name="name" value={formData.name} onChange={handleChange} required/>
                 </label>
                 <label htmlFor="email">
                     Email

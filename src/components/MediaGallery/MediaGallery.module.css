@@ -28,8 +28,8 @@
 }
 
 /* focus visible pour accessibilité */
-.mediaButton:focus {
-    outline: 3px solid #901C1C;
+.mediaButton:focus, .mediaInfo button:focus {
+    outline: 3px solid var(--color-primary-red);
     outline-offset: 2px;
 }
 
@@ -71,6 +71,8 @@
     justify-content: flex-end;
     align-items: center;
     color: var(--color-primary-red);
+
+    width: 70px;
 }
 
 /* icône cœur */

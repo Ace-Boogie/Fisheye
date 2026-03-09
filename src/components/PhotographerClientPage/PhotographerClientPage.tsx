@@ -1,6 +1,5 @@
 'use client';
-import {useState} from "react";
-import styles from "./PhotographerClientPage.module.css"
+import {useState, useRef} from "react";
 import type {Photographer, Media} from "@/generated/prisma/client";
 import PhotographerHeader from "@/components/PhotographerHeader/PhotographerHeader";
 import MediaGallery from "@/components/MediaGallery/MediaGallery";
@@ -88,21 +87,23 @@ export default function PhotographerClientPage({photographer, medias}: Photograp
        CONTACT MODAL
     ========================= */
 
+    const contactButtonRef = useRef<HTMLButtonElement>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
-
+    const closeModal = () =>{ setIsModalOpen(false); contactButtonRef.current?.focus();}
     /* =========================
        RENDER
     ========================= */
 
     return (
         <>
-            <main className={styles.main}>
+            <main>
                 <PhotographerHeader
                     photographer={photographer}
-                    openModal={openModal}/>
+                    openModal={openModal}
+                    contactButtonRef={contactButtonRef}
+                />
 
                 <MediaSort onSortChange={handleSortChange}/>
                 <MediaGallery

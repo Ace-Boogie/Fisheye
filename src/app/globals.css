@@ -56,6 +56,9 @@ button {
 .button-primary:focus-visible {
   background-color: var(--color-primary-orange);
   color: var(--color-black);
+
+  outline: 3px solid var(--color-primary-red);
+  outline-offset: 2px;
 }
 
 a,

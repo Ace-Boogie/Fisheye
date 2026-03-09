@@ -13,6 +13,7 @@ export default function MediaSort({onSortChange}: MediaSortProps) {
 
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState("Popularité");
+    const [focusedIndex, setFocusedIndex] = useState(0);
 
     const selectRef = useRef<HTMLDivElement>(null);
 
@@ -56,8 +57,36 @@ export default function MediaSort({onSortChange}: MediaSortProps) {
                     aria-haspopup="listbox"
                     aria-expanded={open}
                     aria-labelledby="sort-label"
-                    onClick={() => setOpen(!open)}>
+                    onClick={() => setOpen(!open)}
+                    onKeyDown={(e) => {
+
+                        if (e.key === "ArrowDown") {
+                            e.preventDefault();
+                            setOpen(true);
+                            setFocusedIndex((prev) => (prev + 1) % options.length);
+                        }
+
+                        if (e.key === "ArrowUp") {
+                            e.preventDefault();
+                            setOpen(true);
+                            setFocusedIndex((prev) =>
+                                prev === 0 ? options.length - 1 : prev - 1
+                            );
+                        }
+
+                        if (e.key === "Enter" && open) {
+                            e.preventDefault();
+                            handleSelect(options[focusedIndex]);
+                        }
+
+                        if (e.key === "Escape") {
+                            setOpen(false);
+                        }
+
+                    }}
+                >
                     {selected}
+
 
                     <FontAwesomeIcon
                         icon={faChevronDown}
@@ -69,11 +98,11 @@ export default function MediaSort({onSortChange}: MediaSortProps) {
                     <ul className={styles.options}
                         role="listbox">
                         {options
-                            .filter(option => option.label !== selected) // <-- filtrage ici
-                            .map(option => (
+                            .map((option, index) => (
                                 <li key={option.value}
                                     role="option"
-                                    aria-selected={false} // l'option n'est jamais sélectionnée dans la liste
+                                    className={focusedIndex === index ? styles.active : ""}
+                                    aria-selected={focusedIndex === index}
                                     onClick={() => handleSelect(option)}>
 
                                     {option.label}

@@ -11,3 +11,8 @@
     font-weight: 400;
     font-size: 36px;
 }
+
+.header a:focus {
+    outline: 3px solid var(--color-primary-red);
+    outline-offset: 2px;
+}

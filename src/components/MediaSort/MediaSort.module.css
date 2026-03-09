@@ -40,6 +40,11 @@
     padding: 0 15px;
 }
 
+.selectButton:focus {
+    outline: 3px solid var(--color-primary-red);
+    outline-offset: 2px;
+}
+
 /* flèche */
 
 .arrow {
@@ -100,4 +105,9 @@
 
 .options li:hover {
     background: #a61c2a;
+}
+
+.options li.active {
+    background-color: var(--color-primary-orange);
+    color: var(--color-black);
 }
