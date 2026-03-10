@@ -19,7 +19,7 @@ export default async function PhotographersPage() {
                             >
                                 <Image
                                     src={`/assets/${photographer.portrait}`}
-                                    alt=""
+                                    alt={`Portrait de ${photographer.name}`}
                                     width={200}
                                     height={200}
                                     quality={75}
