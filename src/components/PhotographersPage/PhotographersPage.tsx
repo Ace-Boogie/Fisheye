@@ -23,7 +23,7 @@ export default async function PhotographersPage() {
                                     width={200}
                                     height={200}
                                     quality={75}
-                                    loading="lazy"
+                                    priority
                                 />
 
                                 <h2>{photographer.name}</h2>
