@@ -8,7 +8,7 @@ export default function Header({ title }: { title?: string }) {
             <Link href="/">
                 <Image
                     src="/logo.png"
-                    alt="Fisheye Home page"
+                    alt="Fisheye logo"
                     width={200}
                     height={50}
                     className={styles.logo}

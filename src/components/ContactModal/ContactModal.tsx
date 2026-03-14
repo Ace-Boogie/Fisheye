@@ -14,7 +14,7 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
     const modalRef = useRef<HTMLDivElement>(null);
     const firstInputRef = useRef<HTMLInputElement>(null);
 
-    const [formData, setFormData] = useState({name: "", email: "", message: ""});
+    const [formData, setFormData] = useState({firstname: "", name: "", email: "", message: ""});
 
     /* =========================
     FOCUS AUTO + ESCAPE
@@ -32,7 +32,7 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
             // Focus trap
             if (event.key === "Tab" && modalRef.current) {
                 const focusableElements = modalRef.current.querySelectorAll
-                    <HTMLElement>("button, [href], input, textarea, select, [tabindex]:not([tabindex='-1'])");
+                    < HTMLElement > ("button, [href], input, textarea, select, [tabindex]:not([tabindex='-1'])");
 
                 const firstElement = focusableElements[0];
                 const lastElement =
@@ -71,20 +71,28 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
     };
 
     return (
-        <div ref={modalRef} role="dialog" aria-modal="true" aria-label={`Contactez ${photographer.name}`} className={styles.modal}>
+        <div ref={modalRef} role="dialog" aria-modal="true" aria-label={`Contactez ${photographer.name}`}
+             className={styles.modal}>
             <form onSubmit={handleSubmit}>
+                <h2>{`Contactez-moi ${photographer.name}`}</h2>
                 <button onClick={onClose}
                         aria-label="Fermer"
                         className={styles.closeButton}>
                     <FontAwesomeIcon icon={faTimes}/>
                 </button>
+                <label htmlFor="firstname">
+                    Prénom
+                    <input ref={firstInputRef} id="firstname" type="text" name="name" value={formData.firstname}
+                           onChange={handleChange} required/>
+                </label>
                 <label htmlFor="name">
                     Nom
-                    <input ref={firstInputRef} id="name" type="text" name="name" value={formData.name} onChange={handleChange} required/>
+                    <input id="name" type="text" name="name" value={formData.name} onChange={handleChange} required/>
                 </label>
                 <label htmlFor="email">
                     Email
-                    <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required/>
+                    <input id="email" type="email" name="email" value={formData.email} onChange={handleChange}
+                           required/>
                 </label>
                 <label htmlFor="message">
                     Message

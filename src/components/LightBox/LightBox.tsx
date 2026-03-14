@@ -21,6 +21,7 @@ export default function LightBox({medias, index, onClose, onPrev, onNext}: Light
 
     useEffect(() => {
         modalRef.current?.focus();
+        document.body.style.overflow = "hidden";
 
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") onClose();
@@ -28,7 +29,11 @@ export default function LightBox({medias, index, onClose, onPrev, onNext}: Light
             if (event.key === "ArrowRight" && onNext) onNext();
         };
         window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = "auto";
+            window.removeEventListener("keydown", handleKeyDown);
+        };
     }, [onClose, onPrev, onNext]);
 
     return (
@@ -39,34 +44,57 @@ export default function LightBox({medias, index, onClose, onPrev, onNext}: Light
                 aria-modal="true"
                 aria-labelledby={`lightbox-title-${media.id}`}
                 tabIndex={-1}
-                className={styles.lightbox}>
+                className={styles.lightbox}
+            >
 
-                <button onClick={onClose}
-                        aria-label="Fermer"
-                        className={styles.closeLightBox}>
-                    <FontAwesomeIcon icon={faTimes}/>
-                </button>
-                <button onClick={onPrev}
-                        aria-label="Précédent"
-                        className={styles.onPrevLightBox}>
-                    <FontAwesomeIcon icon={faChevronLeft}/>
-                </button>
                 <div className={styles.mediaContainer}>
-                    {media.image && <Image src={`/assets/${media.image}`} alt="" width={350} height={300} className={styles.mediaImage}/>}
-                    {media.video && <video controls aria-label={media.title} className={styles.mediaVideo}>
-                        <source src={`/assets/${media.video}`} type="video/mp4"/>
-                    </video>}
-                    <div aria-live="polite">
-                        <p id={`lightbox-title-${media.id}`}>
-                            {media.title}
-                        </p>
-                    </div>
-                </div>
-                <button onClick={onNext}
+                    <button
+                        onClick={onPrev}
+                        aria-label="Précédent"
+                        className={styles.onPrevLightBox}
+                    >
+                        <FontAwesomeIcon icon={faChevronLeft}/>
+                    </button>
+
+
+                    {media.image && (
+                        <Image
+                            src={`/assets/${media.image}`}
+                            alt={media.title}
+                            fill
+                            sizes="(max-width: 1200px) 90vw, 1050px"
+                            className={styles.mediaImage}
+                        />
+                    )}
+
+                    {media.video && (
+                        <video controls className={styles.mediaVideo}>
+                            <source src={`/assets/${media.video}`} type="video/mp4"/>
+                        </video>
+                    )}
+
+                    <button
+                        onClick={onNext}
                         aria-label="Suivant"
-                        className={styles.onNextLightBox}>
-                    <FontAwesomeIcon icon={faChevronRight}/>
-                </button>
+                        className={styles.onNextLightBox}
+                    >
+                        <FontAwesomeIcon icon={faChevronRight}/>
+                    </button>
+
+                    <button
+                        onClick={onClose}
+                        aria-label="Fermer"
+                        className={styles.closeLightBox}
+                    >
+                        <FontAwesomeIcon icon={faTimes}/>
+                    </button>
+
+                </div>
+
+                <p id={`lightbox-title-${media.id}`}>
+                    {media.title}
+                </p>
+
             </div>
         </div>
     );

@@ -14,7 +14,7 @@ export default async function PhotographerPage({params}: PageProps) {
 
 
     if (isNaN(photographerId)) {
-        return <p>Invalid photographer ID</p>;
+        throw new Error("Invalid photographer ID");
     }
 
     // Récupération des données via Prisma
@@ -22,7 +22,7 @@ export default async function PhotographerPage({params}: PageProps) {
     const medias = await getAllMediasForPhotographer(photographerId);
 
     if (!photographer) {
-        return <p>Photographer not found</p>;
+        throw new Error("Photographer not found");
     }
 
     return (

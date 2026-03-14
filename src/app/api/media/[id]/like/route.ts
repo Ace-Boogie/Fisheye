@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { updateNumberOfLikes } from "@/lib/prisma-db";
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
-    const mediaId = parseInt(params.id, 10);
+    const resolvedParams = await params;
+    const mediaId = parseInt(resolvedParams.id, 10);
     const { newLikes } = await req.json();
 
     try {
