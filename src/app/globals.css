@@ -68,3 +68,17 @@ a:hover {
   text-decoration: none;
   color: inherit;
 }
+
+#nprogress .bar {
+  background: var(--color-primary-red);
+  height: 3px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--color-primary-orange),
+  0 0 5px var(--color-primary-orange);
+}
+
+#nprogress .spinner {
+  display: none;
+}
