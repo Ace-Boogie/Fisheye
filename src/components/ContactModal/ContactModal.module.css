@@ -54,12 +54,13 @@
 .modal input,
 .modal textarea {
     width: 100%;
-    padding: 8px 0;
-    border: 1px solid transparent; /* couleur primaire texte */
+    padding: 8px 10px;
+    border: 1px solid transparent;
     border-radius: 5px;
     font-family: inherit;
-    font-size: 1rem;
     resize: vertical;
+    font-size: 24px;
+    font-weight: 400;
 }
 
 /* Bouton submit */

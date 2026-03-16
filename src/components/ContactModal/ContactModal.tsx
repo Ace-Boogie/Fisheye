@@ -82,7 +82,7 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
                 </button>
                 <label htmlFor="firstname">
                     Prénom
-                    <input ref={firstInputRef} id="firstname" type="text" name="name" value={formData.firstname}
+                    <input ref={firstInputRef} id="firstname" type="text" name="firstname" value={formData.firstname}
                            onChange={handleChange} required/>
                 </label>
                 <label htmlFor="name">
