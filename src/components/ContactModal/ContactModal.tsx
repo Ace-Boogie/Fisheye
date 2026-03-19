@@ -91,8 +91,7 @@ export default function ContactModal({photographer, onClose}: ContactModalProps)
                 </label>
                 <label htmlFor="email">
                     Email
-                    <input id="email" type="email" name="email" value={formData.email} onChange={handleChange}
-                           required/>
+                    <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required/>
                 </label>
                 <label htmlFor="message">
                     Message

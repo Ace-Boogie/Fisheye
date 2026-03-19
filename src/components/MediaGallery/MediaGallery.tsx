@@ -28,7 +28,7 @@ export default function MediaGallery({ medias, openLightbox, onLikeChange }: Med
                                 height={650}
                                 quality={75}
                                 sizes="(max-width: 1000px) 90vw, 900px"
-                                loading="lazy"
+                                priority
                             />}
                         {media.video && <video aria-label={media.title} className={styles.mediaVideo}>
                             <source src={`/assets/${media.video}`} type="video/mp4"/>
